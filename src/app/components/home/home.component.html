@@ -1,0 +1,135 @@
+<div class="card">
+    <p-toast 
+    position="top-center" 
+    [showTransformOptions]="'translateY(100%)'" 
+    [showTransitionOptions]="'1000ms'" 
+    [hideTransitionOptions]="'1000ms'" 
+    [showTransformOptions]="'translateX(100%)'"/>
+
+    <p-table
+        [value]="customers"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20]">
+        <ng-template pTemplate="header">
+            <tr>
+                <button class="plus" (click)="showAddDialog()"><i class="fa-solid fa-plus"></i></button>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Period</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.description }}</td>
+                <td>{{ customer.price }}</td>
+                <td>{{ customer.period }}</td>
+                <td>
+                    <!-- <button (click)="getSubscriptionDetails(customer.subscriptionTypeId)">View Details</button>  -->
+                    <button class="edit" (click)="showEditDialog(customer)"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete" (click)="delete(customer.subscriptionTypeId)"><i class="fa-solid fa-trash"></i></button> 
+
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog 
+    header="Add New Subscription Type" 
+    [(visible)]="displayAddDialog" 
+    [modal]="true" 
+    [style]="{width: '50vw'}"
+    (onHide)="resetForm()"
+    class="custom-dialog">
+    <form [formGroup]="addForm" (ngSubmit)="save()">
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label for="name" class="p-col-12 p-md-2">Name</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="name" pInputText formControlName="name"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="description" class="p-col-12 p-md-2">Description</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="description" pInputText formControlName="description"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="price" class="p-col-12 p-md-2">Price</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="price" pInputText formControlName="price"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="period" class="p-col-12 p-md-2">Period</label>
+                <div class="p-col-12 p-md-10">
+                    <input type="number" id="period" pInputText formControlName="period"/>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <button type="submit" pButton icon="pi pi-check" label="Add" class="p-button-success"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="displayAddDialog = false" label="Cancel" class="p-button-secondary"></button>
+        </p-footer>
+    </form>
+</p-dialog>
+
+
+
+    <p-dialog 
+    header="Edit Subscription Type" 
+    [(visible)]="displayEditDialog" 
+    [modal]="true" 
+    [style]="{width: '50vw'}"
+    (onHide)="resetForm()"
+    class="custom-dialog">
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label for="name" class="p-col-12 p-md-2">Name</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="name" pInputText formControlName="name"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="description" class="p-col-12 p-md-2">Description</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="description" pInputText formControlName="description"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="price" class="p-col-12 p-md-2">Price</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="price" pInputText formControlName="price"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="period" class="p-col-12 p-md-2">Period</label>
+                <div class="p-col-12 p-md-10">
+                    <input type="number" id="period" pInputText formControlName="period"/>
+                </div>
+            </div>
+            <input type="hidden" formControlName="subscriptionTypeId" />
+        </div>
+        <p-footer>
+            <button pRipple type="submit" pButton icon="pi pi-check" label="Update" class="p-button-success"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="displayEditDialog = false" label="Cancel" class="p-button-secondary"></button>
+
+        </p-footer>
+    </form>
+</p-dialog>
+
+<p-confirmDialog 
+    key="positionDialog" 
+    rejectButtonStyleClass="p-button-outlined" 
+    [styleClass]="'custom-dialog'" 
+/>
+    
+</div>

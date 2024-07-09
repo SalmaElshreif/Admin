@@ -1,0 +1,83 @@
+th{
+  text-align: center;
+  width: 23%;
+}
+
+td{
+  text-align: center;
+}
+.custom-dialog .p-dialog-header {
+    background-color: #007ad9;
+    color: #fff;
+    font-weight: bold;
+}
+
+.custom-dialog .p-dialog .p-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+}
+
+.custom-dialog .p-field {
+    margin-bottom: 1rem;
+}
+
+.custom-dialog .p-button-success {
+    margin-right: 0.5rem;
+}
+
+  .edit{
+    border: none;
+    background-color: white;
+    color: rgb(3, 3, 116);
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .edit:hover, .delete:hover{
+    background-color: #f2f3f2;
+  }
+
+  .delete{
+    border: none;
+    background-color: white;
+    color: red;
+    border-radius: 50%;
+  }
+
+  .plus{
+    margin-top: 50px;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
+
+  .plus:hover{
+    background-color: #f2f3f2;
+  }
+
+  .ui-confirmdialog {
+    position: fixed;
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+  }
+
+  .ui-confirmdialog .p-dialog-header {
+    background-color: #007ad9;
+    color: #fff; 
+    font-weight: bold; 
+}
+
+.ui-confirmdialog .p-dialog .p-footer {
+    display: flex;
+    justify-content: flex-end; 
+    padding-top: 1rem; 
+}
+
+.ui-confirmdialog .p-dialog .p-footer .p-button-success {
+    margin-right: 0.5rem; 
+}

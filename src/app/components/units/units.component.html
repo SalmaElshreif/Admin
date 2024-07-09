@@ -1,0 +1,121 @@
+<div class="card">
+    <p-toast 
+    position="top-center" 
+    [showTransformOptions]="'translateY(100%)'" 
+    [showTransitionOptions]="'1000ms'" 
+    [hideTransitionOptions]="'1000ms'" 
+    [showTransformOptions]="'translateX(100%)'"/>
+
+    <p-table
+        [value]="units"
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10, 20]">
+        <ng-template pTemplate="header">
+            <tr>
+                <button class="plus" (click)="showAddDialog()"><i class="fa-solid fa-plus"></i></button>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>NameEn</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-units>
+            <tr>
+                <td>{{ units.name }}</td>
+                <td>{{ units.code }}</td>
+                <td>{{ units.nameEn }}</td>
+                <td>
+                    <button class="edit" (click)="showEditDialog(units)"><i class="fa-solid fa-pen"></i></button>
+                    <button class="delete" (click)="delete(units.unitId)"><i class="fa-solid fa-trash"></i></button> 
+
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog 
+    header="Add New Unit" 
+    [(visible)]="displayAddDialog" 
+    [modal]="true" 
+    [style]="{width: '50vw'}"
+    (onHide)="resetForm()"
+    class="custom-dialog">
+    <form [formGroup]="addForm" (ngSubmit)="save()">
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label for="name" class="p-col-12 p-md-2">Name</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="name" pInputText formControlName="name"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="code" class="p-col-12 p-md-2">Code</label>
+                <div class="p-col-12 p-md-10">
+                    <input type="number" id="code" pInputText formControlName="code"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="description" class="p-col-12 p-md-2">NameEn</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="nameEn" pInputText formControlName="nameEn"/>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <button type="submit" pButton icon="pi pi-check" label="Add" class="p-button-success"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="displayAddDialog = false" label="Cancel" class="p-button-secondary"></button>
+        </p-footer>
+    </form>
+</p-dialog>
+
+
+
+    <p-dialog 
+    header="Edit Units" 
+    [(visible)]="displayEditDialog" 
+    [modal]="true" 
+    [style]="{width: '50vw'}"
+    (onHide)="resetForm()"
+    class="custom-dialog">
+    <form [formGroup]="editForm" (ngSubmit)="update()">
+        <div class="p-fluid">
+            <div class="p-field p-grid">
+                <label for="name" class="p-col-12 p-md-2">Name</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="name" pInputText formControlName="name"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="code" class="p-col-12 p-md-2">Code</label>
+                <div class="p-col-12 p-md-10">
+                    <input type="number" id="code" pInputText formControlName="code"/>
+                </div>
+            </div>
+            <div class="p-field p-grid">
+                <label for="nameEn" class="p-col-12 p-md-2">NameEn</label>
+                <div class="p-col-12 p-md-10">
+                    <input id="nameEn" pInputText formControlName="nameEn"/>
+                </div>
+            </div>
+            
+            <input type="hidden" formControlName="unitId" />
+        </div>
+        <p-footer>
+            <button pRipple type="submit" pButton icon="pi pi-check" label="Update" class="p-button-success"></button>
+            <button type="button" pButton icon="pi pi-times" (click)="displayEditDialog = false" label="Cancel" class="p-button-secondary"></button>
+
+        </p-footer>
+    </form>
+</p-dialog>
+
+<p-confirmDialog 
+    key="positionDialog" 
+    rejectButtonStyleClass="p-button-outlined" 
+    [styleClass]="'custom-dialog'" 
+/>
+    
+</div>

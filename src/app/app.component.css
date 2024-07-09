@@ -1,0 +1,71 @@
+::ng-deep .p-toolbar{
+  background-color: rgb(235, 235, 246);
+  margin-bottom: 50px;
+}
+
+.p-toolbar-group-end  {
+    margin-left: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px ;
+  }
+
+  .logout, .bars{
+    border: none;
+    background-color: transparent;
+    color: white;
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  .logout:hover, .bars:hover{
+    color: #bebdbd;
+  }
+
+  .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .sidebar-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    text-align: left;
+  }
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+}
+
+.sidebar-button{
+  background-color: #2a4fca;
+  border: none;
+  font-size: 1rem;
+  padding: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.sidebar-button:hover{
+  background-color: #274abe;
+
+}
+
+.subTypes{
+  padding-right: 20px;
+}
+
+
+::ng-deep .p-sidebar{
+  width: 300px;
+  background-color: #F5F7F8;
+}
+
